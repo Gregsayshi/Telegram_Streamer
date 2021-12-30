@@ -1,0 +1,9 @@
+app_title: "client0"
+phone_number: 
+api_id: 
+api_hash: 
+max_channels_per_client: 500
+periodic_check_interval_s: 1800
+client_id: 0
+
+
