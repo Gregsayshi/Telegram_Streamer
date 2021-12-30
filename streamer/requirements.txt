@@ -1,0 +1,4 @@
+Telethon==1.19.0
+psycopg2==2.8.6
+pytz==2020.4
+PyYAML==5.4.1

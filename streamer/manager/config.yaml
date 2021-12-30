@@ -1,0 +1,58 @@
+app_title: 
+phone_number: 
+api_id: 
+api_hash: 
+max_channels_per_client: 500
+periodic_check_interval_s: 1800
+client_id: 0
+channels: [
+  "https://t.me/cointelegraph",
+  "https://t.me/CryptoCrunchNews",
+  "https://t.me/Crypto_Bitcoin_Blockchain",
+  "https://t.me/Bitcoin_NewsTG",
+  "https://t.me/Crypto_Binance_Trading",
+  "https://t.me/btcechochat",
+  "https://t.me/www_Bitcoin_com",
+  "https://t.me/CryptoAlerts",
+  "https://t.me/elliotradescrypto",
+  "https://t.me/TheBcrewchat",
+  "https://t.me/edwardmorra_btc",
+  "https://t.me/emperorbtcTA",
+  "https://t.me/DarkMatterCO",
+  "https://t.me/tehmoonwalkin",
+  "https://t.me/KrillinTA",
+  "https://t.me/BrieflyCrypto",
+  "https://t.me/glassnode",
+  "https://t.me/AltcoinSherpaTA",
+  "https://t.me/binanceexchange",
+  "https://t.me/cointrendz",
+  "https://t.me/thecryptoroom",
+  "https://t.me/BinanceResearch",
+  "https://t.me/DeCenterOrg",
+  "https://t.me/PolkadotOfficial",
+  "https://t.me/CardanoAnnouncements",
+  "https://t.me/chainlinkofficial",
+  "https://t.me/bitfinex",
+  "https://t.me/CoinbaseUpdate",
+  "https://t.me/OKExOfficial_English",
+  "https://t.me/Kucoin_Exchange",
+  "https://t.me/BybitEnglish",
+  "https://t.me/deribit",
+  "https://t.me/salsatekila",
+  "https://t.me/pierre_crypt0_public",
+  "https://t.me/devchartLounge",
+  "https://t.me/announcementGC",
+  "https://t.me/gemcollectors",
+  "https://t.me/InfinityGainz",
+  "https://t.me/btcechochat",
+  "https://t.me/www_Bitcoin_com",
+  "https://t.me/nexofinance",
+  "https://t.me/tronnetworkEN",
+  "https://t.me/CakeDeFi_EN",
+  "https://t.me/TronLink",
+  "https://t.me/defichainchannel",
+  "https://t.me/CoinMarketCap",
+  "https://t.me/CardanoTradingGerman",
+  "https://t.me/zilliqachat",
+  "https://t.me/CardanoAnnouncements"
+]
