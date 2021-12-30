@@ -1,0 +1,86 @@
+#  Make sure the left side in the volume bindings points to the specified files on the host machine
+version: '3'
+services:
+    zookeeper:
+        image: wurstmeister/zookeeper
+        container_name: zookeeper
+        ports:
+            - ##
+
+    kafka:
+        image: wurstmeister/kafka
+        container_name: kafka
+        depends_on:
+            - zookeeper
+        ports:
+            - ##
+        expose:
+            - ##
+        environment:
+            KAFKA_BROKER_ID: 1
+            KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+            KAFKA_ADVERTISED_LISTENERS: INSIDE://kafka:##, OUTSIDE://localhost:##
+            KAFKA_LISTENERS: INSIDE://##, OUTSIDE://##
+            KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INSIDE:PLAINTEXT, OUTSIDE:PLAINTEXT
+            KAFKA_INTER_BROKER_LISTENER_NAME: INSIDE
+            KAFKA_CREATE_TOPICS: #...
+
+
+    consumer_to_db:
+        build: streamer/consumer_to_db
+        container_name: consumer_to_db
+        environment:
+            KAFKA_BROKER_INSTANCES: ##
+            LOG_LEVEL: "INFO"
+        depends_on:
+            - kafka
+        volumes:
+            - ${PWD}/configs/telegram_config.yaml:/consumer_to_db/config.yaml:z
+            - ${PWD}/configs/consumer_config.yaml:/consumer_to_db/consumer_config.yaml:z
+
+    telegram_manager:
+        build: streamer/manager
+        container_name: telegram_manager
+        environment:
+            KAFKA_BROKER_INSTANCES: ##
+            LOG_LEVEL: "INFO"
+            CLIENT_ID: 0
+        depends_on:
+            - kafka
+        volumes:
+            - ${PWD}/configs/telegram_config.yaml:/manager/config.yaml:z
+            - ${PWD}/configs/consumer_config.yaml:/manager/consumer_config.yaml:z
+            - ${PWD}/configs/tg_input_channels.yaml:/manager/tg_input_channels.yaml:z
+
+    telegram_producer0:
+        build: streamer/producer0
+        container_name: telegram_producer0
+        environment:
+            KAFKA_BROKER_INSTANCES: ##
+            LOG_LEVEL: "INFO"
+            CLIENT_ID: 0
+        depends_on:
+            - kafka
+        volumes:
+            - ${PWD}/configs/telegram_config.yaml:/producer0/config.yaml:z
+            - ${PWD}/configs/consumer_config0.yaml:/producer0/consumer_config0.yaml:z
+            - ${PWD}/configs/tg_input_channels.yaml:/manager/tg_input_channels.yaml:z
+
+    telegram_producer1:
+        build: streamer/producer
+        container_name: telegram_producer1
+        environment:
+            KAFKA_BROKER_INSTANCES: ##
+            LOG_LEVEL: "INFO"
+            CLIENT_ID: 1
+        depends_on:
+            - kafka
+        volumes:
+            - ${PWD}/configs/telegram_config.yaml:/producer1/config.yaml:z
+            - ${PWD}/configs/consumer_config1.yaml:/producer1/consumer_config1.yaml:z
+
+
+networks:
+  default:
+    external:
+      name: streaming_network
