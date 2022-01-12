@@ -37,5 +37,9 @@ which channels to join (via link), which channels to leave, for which channels t
 
 [work in progress, database specifications will be added shortly]
 
+
+
+
 **attribution/coin_to_text_attribution.py**
+
 Reads textual data (message, posts etc.) and tries to attribute the data to a cryptoccurency: it counts the number of cashtags & hashtags ($ETH, #BTC etc.) as well as the number of full names (Ethereum, Bitcoin etc.) in the text. The coin with most mentions becomes the attributed coin. If there is an equal amount of mentions across multiple coins - no attribution. If the current message is not attributed, the heuristic looks for the attributed coin of the parent-message recursively - once an attributed coin of a parent is identified, it becomes the attributed coin of the child-message. Parent messages are kept in-memory in an [ExpiringDict](https://github.com/mailgun/expiringdict#:~:text=README.rst-,Expiring%20Dict,during%20cleanup%20from%20expired%20values.) Current cryptocurrency scope: top 50 coins ordered by market capitalization from the [Coingecko API](https://www.coingecko.com/en/api). 
